@@ -137,27 +137,35 @@ export function initFog({ canvas, photo, frost, glow, writing = [], onFirstWipe 
   }
 
   // ---------- 凝視：停住就透出暖光 ----------
-  let gaze = { x: 0, y: 0, since: 0, active: false, level: 0 };
+  // 光不會一下子出現：先等一下，再慢慢暈開；位置也是慢慢飄過去，不會跳
+  let gaze = { x: innerWidth / 2, y: innerHeight / 2, since: 0, active: false, level: 0 };
+  let lx = gaze.x, ly = gaze.y;   // 光實際所在的位置（追著 gaze 慢慢移動）
   function updateGaze(clientX, clientY, now) {
     if (Math.hypot(clientX - gaze.x, clientY - gaze.y) > 14) {
-      gaze = { x: clientX, y: clientY, since: now, active: true, level: gaze.level };
+      gaze.x = clientX; gaze.y = clientY; gaze.since = now; gaze.active = true;
     }
   }
   function endGaze() { gaze.active = false; }
+  const ease = (t) => t * t * (3 - 2 * t);
   function stepGaze(now) {
     const holding = gaze.active && now - gaze.since > CONFIG.gazeDelay;
-    gaze.level += holding ? 0.016 : -0.03;
+    // 亮起來慢、暗下去更慢，像雲散開又合起來
+    gaze.level += holding ? 0.009 : -0.012;
     gaze.level = Math.max(0, Math.min(1, gaze.level));
+    const k = holding ? 0.06 : 0.02;
+    lx += (gaze.x - lx) * k;
+    ly += (gaze.y - ly) * k;
+    const e = ease(gaze.level);
     if (glow) {
-      glow.style.opacity = (gaze.level * 0.95).toFixed(3);
-      glow.style.transform = `translate(${gaze.x}px, ${gaze.y}px) translate(-50%, -50%) scale(${0.4 + gaze.level * 0.9})`;
+      glow.style.setProperty('--g', e.toFixed(3));
+      glow.style.transform = `translate3d(${lx.toFixed(1)}px, ${ly.toFixed(1)}px, 0)`;
+      document.documentElement.style.setProperty('--gaze', e.toFixed(3));
     }
     if (holding) {
-      // 凝視的地方，霧也一點一點散開
       const rect = canvas.getBoundingClientRect();
       ctx.globalCompositeOperation = 'destination-out';
-      wipeAt((gaze.x - rect.left) * CONFIG.scale, (gaze.y - rect.top) * CONFIG.scale,
-        CONFIG.brush * CONFIG.scale * (0.6 + gaze.level * 1.6), 0.08);
+      wipeAt((lx - rect.left) * CONFIG.scale, (ly - rect.top) * CONFIG.scale,
+        CONFIG.brush * CONFIG.scale * (0.6 + e * 1.8), 0.06);
     }
   }
 

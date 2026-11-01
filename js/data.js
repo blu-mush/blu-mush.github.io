@@ -148,7 +148,7 @@ export const ROLL = Array.from({ length: 16 }, (_, i) => `assets/img/roll/${Stri
 // ---------- 周邊 ----------
 export const MERCH = {
   note: '現場演出時販售',
-  items: ['貼紙', 'cross the still 專輯'],
+  items: ['貼紙', 'Total Feedback 2026 合集'],
 };
 
 // ---------- 霧上的字 ----------

@@ -328,20 +328,96 @@ a:focus-visible, summary:focus-visible {
    第二版新增
    ====================================================== */
 
-/* 凝視時透出的暖光 */
+/* 凝視時透出的暖光
+   像陽光從起霧的玻璃後面透進來：
+   最裡面是近白的光心，往外是琥珀色、再外面是淡淡的玫瑰金，
+   邊緣的形狀會慢慢變動，旁邊有幾顆被照亮的小水珠。 */
 .glow {
+  --g: 0;
   position: fixed;
   z-index: 2;
   left: 0;
   top: 0;
-  width: 440px;
-  height: 440px;
-  border-radius: 50%;
+  width: 0;
+  height: 0;
   pointer-events: none;
+  will-change: transform;
+}
+.glow > span {
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+/* 整片空氣被染暖 */
+.glow-wash {
+  width: 200vmax;
+  height: 200vmax;
+  background: radial-gradient(circle, rgba(255, 200, 150, 0.22) 0%, rgba(255, 190, 150, 0.08) 25%, rgba(255, 190, 150, 0) 55%);
+  opacity: var(--g);
+  mix-blend-mode: soft-light;
+}
+/* 外圈：玫瑰金，形狀慢慢變 */
+.glow-halo {
+  width: calc(260px + var(--g) * 380px);
+  height: calc(240px + var(--g) * 360px);
+  background: radial-gradient(closest-side, rgba(255, 196, 160, 0.55), rgba(255, 176, 150, 0.22) 55%, rgba(255, 170, 150, 0) 100%);
+  filter: blur(18px);
+  opacity: calc(var(--g) * 0.9);
+  mix-blend-mode: screen;
+  animation: drift 9s ease-in-out infinite;
+}
+/* 中圈：琥珀色，會呼吸 */
+.glow-bloom {
+  width: calc(120px + var(--g) * 200px);
+  height: calc(120px + var(--g) * 200px);
+  background: radial-gradient(closest-side, rgba(255, 214, 150, 0.95), rgba(255, 184, 110, 0.45) 50%, rgba(255, 170, 100, 0) 100%);
+  filter: blur(8px);
+  opacity: var(--g);
+  mix-blend-mode: screen;
+  animation: breathe 4.2s ease-in-out infinite;
+}
+/* 光心：近白 */
+.glow-core {
+  width: calc(30px + var(--g) * 60px);
+  height: calc(30px + var(--g) * 60px);
+  background: radial-gradient(closest-side, rgba(255, 252, 240, 1), rgba(255, 236, 200, 0.6) 60%, rgba(255, 230, 190, 0) 100%);
+  filter: blur(4px);
+  opacity: calc(var(--g) * 0.95);
+  mix-blend-mode: screen;
+}
+/* 被照亮的小水珠 */
+.fleck {
+  width: 7px;
+  height: 7px;
+  background: radial-gradient(circle, rgba(255, 246, 225, 0.95), rgba(255, 220, 170, 0) 70%);
   opacity: 0;
   mix-blend-mode: screen;
-  background: radial-gradient(circle, rgba(255, 216, 150, 1) 0%, rgba(255, 186, 120, 0.6) 35%, rgba(255, 170, 110, 0) 70%);
-  will-change: transform, opacity;
+  animation: fleck 5s ease-in-out infinite;
+}
+.f1 { --dx: -120px; --dy: -60px; animation-delay: 0s; }
+.f2 { --dx: 90px; --dy: -110px; width: 5px; height: 5px; animation-delay: -1.2s; }
+.f3 { --dx: 150px; --dy: 40px; width: 9px; height: 9px; animation-delay: -2.1s; }
+.f4 { --dx: -70px; --dy: 120px; animation-delay: -3s; }
+.f5 { --dx: 30px; --dy: 160px; width: 4px; height: 4px; animation-delay: -3.7s; }
+.f6 { --dx: -170px; --dy: 20px; width: 6px; height: 6px; animation-delay: -4.4s; }
+@keyframes drift {
+  0%, 100% { border-radius: 52% 48% 46% 54% / 50% 56% 44% 50%; transform: translate(-50%, -50%) rotate(0deg); }
+  33% { border-radius: 44% 56% 54% 46% / 56% 44% 56% 44%; transform: translate(-49%, -51%) rotate(8deg); }
+  66% { border-radius: 56% 44% 50% 50% / 46% 54% 46% 54%; transform: translate(-51%, -49%) rotate(-6deg); }
+}
+@keyframes breathe {
+  0%, 100% { transform: translate(-50%, -50%) scale(0.96); }
+  50% { transform: translate(-50%, -50%) scale(1.05); }
+}
+@keyframes fleck {
+  0%, 100% { opacity: 0; transform: translate(calc(-50% + var(--dx) * (0.6 + var(--g) * 0.5)), calc(-50% + var(--dy) * (0.6 + var(--g) * 0.5))) scale(0.6); }
+  50% { opacity: calc(var(--g) * 0.9); transform: translate(calc(-50% + var(--dx) * (0.6 + var(--g) * 0.5)), calc(-50% + var(--dy) * (0.6 + var(--g) * 0.5) - 10px)) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .glow-halo, .glow-bloom, .fleck { animation: none; }
 }
 
 /* now playing */
