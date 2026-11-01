@@ -585,31 +585,38 @@ a:focus-visible, summary:focus-visible {
   .frame img { filter: none; transform: none; }
 }
 
-/* 突然冒出來的話 */
+/* 偶爾出現的歌詞：一個字一個字手寫出來 */
 .chatter { position: fixed; inset: 0; z-index: 5; pointer-events: none; overflow: hidden; }
 .say {
   position: absolute;
-  transform: translate(-10%, -50%) rotate(var(--tilt, 0deg));
-  font-family: 'Reenie Beanie', var(--sans);
-  font-size: var(--size, 24px);
-  line-height: 1.1;
-  white-space: nowrap;
-  color: rgba(24, 32, 28, 0.82);
-  text-shadow: 0 0 6px rgba(238, 243, 239, 0.95), 0 0 14px rgba(238, 243, 239, 0.8);
-  /* 像用手指在霧上寫出來：從左往右寫出，停一下，再暈開消失 */
-  clip-path: inset(0 100% 0 0);
-  animation: write 3.6s ease forwards;
+  max-width: min(78vw, 520px);
+  transform: rotate(var(--tilt, 0deg));
+  transform-origin: left center;
+  font-family: 'Reenie Beanie', cursive;
+  font-size: var(--size, 26px);
+  line-height: 1.05;
+  color: rgba(24, 32, 28, 0.85);
+  text-shadow: 0 0 6px rgba(238, 243, 239, 0.95), 0 0 14px rgba(238, 243, 239, 0.75);
+  /* 寫完之後整句暈開消失 */
+  animation: say-out 1.6s ease var(--fade-at, 4000ms) forwards;
 }
-.say.right { transform: translate(-90%, -50%) rotate(var(--tilt, 0deg)); }
-@keyframes write {
-  0%   { clip-path: inset(0 100% 0 -10%); opacity: 1; filter: blur(0); }
-  25%  { clip-path: inset(0 -10% 0 -10%); opacity: 1; filter: blur(0); }
-  70%  { clip-path: inset(0 -10% 0 -10%); opacity: 1; filter: blur(0); }
-  100% { clip-path: inset(0 -10% 0 -10%); opacity: 0; filter: blur(6px); }
+.say .word { display: inline-block; white-space: nowrap; }
+.say .ch {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(calc(var(--dy, 0px) + 3px)) rotate(var(--rot, 0deg)) scale(0.85);
+  filter: blur(2.5px);
+  /* 每個字：像筆尖剛碰到起霧的玻璃，先糊糊的，再變清楚 */
+  animation: ink 0.42s cubic-bezier(.2, .7, .3, 1) forwards;
 }
-
-/* 冒出來的話：中文用一般內文字體，細一點、淡一點 */
-.say:lang(zh), .say.zh { font-family: var(--sans); font-weight: 400; font-size: calc(var(--size, 24px) * 0.62); letter-spacing: 0.12em; }
+@keyframes ink {
+  0%   { opacity: 0; filter: blur(2.5px); transform: translateY(calc(var(--dy, 0px) + 3px)) rotate(var(--rot, 0deg)) scale(0.85); }
+  60%  { opacity: 1; filter: blur(0.4px); }
+  100% { opacity: 1; filter: blur(0); transform: translateY(var(--dy, 0px)) rotate(var(--rot, 0deg)) scale(1); }
+}
+@keyframes say-out {
+  to { opacity: 0; filter: blur(6px); }
+}
 
 /* 頁尾：聆聽、追蹤 */
 .foot-group { margin-bottom: 22px; }

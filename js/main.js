@@ -236,34 +236,62 @@ function initChatter() {
     do { t = CHATTER[Math.floor(Math.random() * CHATTER.length)]; } while (t === last && CHATTER.length > 1);
     return (last = t);
   };
+  const r = (a, b) => a + Math.random() * (b - a);
+
+  // 把一句歌詞拆成一個一個字，每個字有自己的出現時間、一點點歪斜和高低差，像手寫
+  function write(text) {
+    const n = el('span', { class: 'say' });
+    let t = 0;
+    for (const word of text.split(' ')) {
+      const w = el('span', { class: 'word' });   // 以「字詞」為單位換行，不會把單字拆開
+      for (const ch of word) {
+        const c = el('span', { class: 'ch' }, ch);
+        c.style.animationDelay = `${t.toFixed(0)}ms`;
+        c.style.setProperty('--dy', `${r(-1.6, 1.6).toFixed(1)}px`);
+        c.style.setProperty('--rot', `${r(-4, 4).toFixed(1)}deg`);
+        w.append(c);
+        // 寫字的速度不固定：大部分 70～120 毫秒一個字，偶爾停頓一下
+        t += r(70, 120) + (Math.random() < 0.06 ? r(150, 320) : 0);
+      }
+      n.append(w, ' ');
+      t += r(60, 140);   // 字詞之間，筆抬起來的停頓
+    }
+    return { n, writeTime: t };
+  }
+
   function pop(x, y) {
-    const text = pick();
+    const { n, writeTime } = write(pick());
     const vw = innerWidth, vh = innerHeight;
     if (x == null) {
       // 隨機位置：偏向左右兩側，少擋到中間的連結
       const side = Math.random() < 0.5;
-      x = side ? vw * (0.04 + Math.random() * 0.3) : vw * (0.62 + Math.random() * 0.3);
-      y = vh * (0.12 + Math.random() * 0.72);
+      x = side ? vw * r(0.04, 0.3) : vw * r(0.45, 0.7);
+      y = vh * r(0.12, 0.84);
     }
-    const n = el('span', { class: /[\u3400-\u9fff]/.test(text) ? 'say zh' : 'say' }, text);
-    n.style.left = `${Math.min(Math.max(x, 12), vw - 12)}px`;
-    n.style.top = `${y}px`;
-    n.style.setProperty('--tilt', `${(Math.random() * 10 - 5).toFixed(1)}deg`);
-    n.style.setProperty('--size', `${Math.round(18 + Math.random() * 14)}px`);
-    if (x > vw * 0.6) n.classList.add('right');
+    n.style.setProperty('--tilt', `${r(-5, 5).toFixed(1)}deg`);
+    n.style.setProperty('--size', `${Math.round(r(22, 34))}px`);
+    n.style.visibility = 'hidden';
     layer.append(n);
-    n.addEventListener('animationend', () => n.remove());
-    while (layer.children.length > 6) layer.firstChild.remove();
+    // 量好大小後，確保整句都在畫面內
+    const box = n.getBoundingClientRect();
+    n.style.left = `${Math.max(12, Math.min(x, vw - box.width - 12))}px`;
+    n.style.top = `${Math.max(12, Math.min(y, vh - box.height - 12))}px`;
+    n.style.visibility = '';
+    // 寫完停一會兒，再像霧氣長回來一樣暈開消失
+    const hold = 2600;
+    n.style.setProperty('--fade-at', `${(writeTime + hold).toFixed(0)}ms`);
+    setTimeout(() => n.remove(), writeTime + hold + 1800);
+    while (layer.children.length > 4) layer.firstChild.remove();
   }
-  // 自己冒出來：每 2.5～6 秒一句
+  // 自己冒出來：每 4～8 秒一句
   (function loop() {
     if (!document.hidden) pop();
-    setTimeout(loop, 2500 + Math.random() * 3500);
+    setTimeout(loop, r(4000, 8000));
   })();
-  // 點到空白處（不是連結、按鈕）也會冒一句
+  // 點到空白處（不是連結、按鈕）也會寫一句
   addEventListener('click', (e) => {
     if (e.target.closest('a, button, summary, iframe, input')) return;
-    pop(e.clientX, e.clientY);
+    pop(e.clientX - 20, e.clientY - 20);
   });
 }
 
