@@ -161,3 +161,15 @@ export const FOG_WRITING = [
   'i hear',
   'wander in the biggest lawn',
 ];
+
+// ---------- 突然冒出來的話 ----------
+// 來源：LINE 群組「blu mush道路平安」常用詞，加上歌詞片段
+// 刻意沒放髒話和彼此的綽號、本名；想加就直接加進陣列
+export const CHATTER = [
+  '超好笑', '笑死', '真假', '我快笑死', '好ㄚ', '好ㄌ', '到ㄌ', '要ㄇ', '真ㄉ',
+  '嗯嗯', '咦', '喔喔', '對啊', '對阿', '好阿', '行', '可', '感覺可以', '問問看',
+  '好耶', '嗚呼', '阿門', '嘻嘻', '呵呵', '度啊', '嗯哼', '不知道誒', '好的',
+  '布嚕粥', '椰絲', '今天練團嗎', '幾點', '團費', '取票', '😭',
+  'When you leave the light on', 'cross the still', 'not the why and not the who',
+  'hay, hay', 'i hear', 'do u ?', 'oh shit.', 'the water goes to ears',
+];

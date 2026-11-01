@@ -508,3 +508,26 @@ a:focus-visible, summary:focus-visible {
   .caterpillar { animation: none; }
   .frame img { filter: none; transform: none; }
 }
+
+/* 突然冒出來的話 */
+.chatter { position: fixed; inset: 0; z-index: 5; pointer-events: none; overflow: hidden; }
+.say {
+  position: absolute;
+  transform: translate(-10%, -50%) rotate(var(--tilt, 0deg));
+  font-family: 'Reenie Beanie', 'LXGW WenKai TC', var(--sans);
+  font-size: var(--size, 24px);
+  line-height: 1.1;
+  white-space: nowrap;
+  color: rgba(24, 32, 28, 0.82);
+  text-shadow: 0 0 6px rgba(238, 243, 239, 0.95), 0 0 14px rgba(238, 243, 239, 0.8);
+  /* 像用手指在霧上寫出來：從左往右寫出，停一下，再暈開消失 */
+  clip-path: inset(0 100% 0 0);
+  animation: write 3.6s ease forwards;
+}
+.say.right { transform: translate(-90%, -50%) rotate(var(--tilt, 0deg)); }
+@keyframes write {
+  0%   { clip-path: inset(0 100% 0 -10%); opacity: 1; filter: blur(0); }
+  25%  { clip-path: inset(0 -10% 0 -10%); opacity: 1; filter: blur(0); }
+  70%  { clip-path: inset(0 -10% 0 -10%); opacity: 1; filter: blur(0); }
+  100% { clip-path: inset(0 -10% 0 -10%); opacity: 0; filter: blur(6px); }
+}

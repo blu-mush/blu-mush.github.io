@@ -1,4 +1,4 @@
-import { BAND, SOCIALS, RELEASES, LIVE, LYRICS_ONLY, EVERYWHERE, LYRICS_CREDIT, ABOUT, MEMBERS, NEXT_SHOW, PAST_SHOWS, ROLL, MERCH, FOG_WRITING } from './data.js';
+import { BAND, SOCIALS, RELEASES, LIVE, LYRICS_ONLY, EVERYWHERE, LYRICS_CREDIT, ABOUT, MEMBERS, NEXT_SHOW, PAST_SHOWS, ROLL, MERCH, FOG_WRITING, CHATTER } from './data.js';
 import { LYRICS } from './lyrics.js';
 import { ICONS } from './icons.js';
 import { initFog } from './fog.js';
@@ -196,6 +196,48 @@ function initCaterpillar() {
   update();
 }
 
+// 突然冒出來的話：群組裡常說的話、歌詞片段，隨機在畫面上冒出來又消失
+function initChatter() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const layer = el('div', { class: 'chatter', 'aria-hidden': 'true' });
+  document.body.append(layer);
+  let last = '';
+  const pick = () => {
+    let t;
+    do { t = CHATTER[Math.floor(Math.random() * CHATTER.length)]; } while (t === last && CHATTER.length > 1);
+    return (last = t);
+  };
+  function pop(x, y) {
+    const text = pick();
+    const vw = innerWidth, vh = innerHeight;
+    if (x == null) {
+      // 隨機位置：偏向左右兩側，少擋到中間的連結
+      const side = Math.random() < 0.5;
+      x = side ? vw * (0.04 + Math.random() * 0.3) : vw * (0.62 + Math.random() * 0.3);
+      y = vh * (0.12 + Math.random() * 0.72);
+    }
+    const n = el('span', { class: 'say' }, text);
+    n.style.left = `${Math.min(Math.max(x, 12), vw - 12)}px`;
+    n.style.top = `${y}px`;
+    n.style.setProperty('--tilt', `${(Math.random() * 10 - 5).toFixed(1)}deg`);
+    n.style.setProperty('--size', `${Math.round(18 + Math.random() * 14)}px`);
+    if (x > vw * 0.6) n.classList.add('right');
+    layer.append(n);
+    n.addEventListener('animationend', () => n.remove());
+    while (layer.children.length > 6) layer.firstChild.remove();
+  }
+  // 自己冒出來：每 2.5～6 秒一句
+  (function loop() {
+    if (!document.hidden) pop();
+    setTimeout(loop, 2500 + Math.random() * 3500);
+  })();
+  // 點到空白處（不是連結、按鈕）也會冒一句
+  addEventListener('click', (e) => {
+    if (e.target.closest('a, button, summary, iframe, input')) return;
+    pop(e.clientX, e.clientY);
+  });
+}
+
 // ---------- 組裝 ----------
 const app = document.getElementById('app');
 app.append(
@@ -216,6 +258,7 @@ app.append(
   renderFooter(),
 );
 initCaterpillar();
+initChatter();
 
 // ---------- 霧 ----------
 const hint = document.getElementById('hint');
