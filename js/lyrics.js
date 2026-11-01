@@ -1,4 +1,9 @@
-// 歌詞來源：blu mush demos 2026 歌詞頁（written by mato）
+// 歌詞（written by mato）
+// 來源：
+//   light on、cross the still、i hear、song of winter's approach、moss、caterpillar
+//     → Drive「blu mushrics」文件
+//   why always like you just know、wanderlust、detoss
+//     → 原本的歌詞網頁（blu mush demos 2026）
 // 每首歌是「段落」陣列，每個段落是「行」陣列
 export const LYRICS = {
  "why-always": [
@@ -13,19 +18,19 @@ export const LYRICS = {
    "When you leave the light on, I see from a distant star.",
    "Waiting for the rain to stop, hoping it’s gone but we won’t stay we are.",
    "Memories in my mind with my back turned to your eyes.",
-   "Through the shine, to this night, till this dive…"
+   "Through the shine, to the night, till this dive…"
   ],
   [
    "Hold things inside, just turning into a waste of time.",
-   "What’s in your mind, I've been longing but I can't unwind.",
+   "What’s on your mind, I've been longing but I can't unwind.",
    "Let alone the signs, and they just keep me all for wrong.",
-   "Through the shine, still playing off track, but why?"
+   "Through the shine, but I’m still playing off track, but why?"
   ],
   [
    "Those are the movies we left them half way, are we now entering the scene?",
    "Unless you wanna keep it like this, it doesn't change that the love is mine.",
    "There’s so much I can’t admit. Owing to some degree, it hides within, soppily.",
-   "Someday falls into no breath, think I'll know when the light’s out."
+   "Someday falls into no breath, think I will know when the light’s out."
   ]
  ],
  "wanderlust": [
@@ -57,7 +62,7 @@ export const LYRICS = {
    "Your averted eyes beside me, save those words if they won’t be mine."
   ],
   [
-   "As those stacks, I've been… just bucket in my head.",
+   "As those stacks, ive been playing slowly just bucket in my head",
    "Been through hundreds of times, to see what in us is unmade.",
    "If I keep running, running and running still seeing us that way, it turns to restless whims and I would tell myself there’s only one end.",
    "Not the why and not the who, just the way it flowers."
@@ -67,10 +72,71 @@ export const LYRICS = {
   [
    "I’ve stayed long enough in your life, don’t talk about it.",
    "For the one who doesn’t lie, take the honesty from me.",
+   "While I’m about to run and hide, one thought at a time.",
+   "Picture us in the same old place, passing words and telling me why you stepped up the first time. Tears gonna dry, but your name still arises throughout the time. I don’t know you, guess you’re just stuck in my dream."
+  ],
+  [
+   "I’ve stayed long enough in your life, don’t talk about it.",
+   "For the one who doesn’t lie, take the honesty from me.",
    "While I’m about to run and hide, one thought at a time."
   ],
   [
-   "Picture us in the same old place, passing words and telling me why you stepped up the first time. Tears gonna dry, but your name still arises throughout the time. I don’t know you, guess you’re just stuck in my dream."
+   "Picture us in the same old place, passing words and telling me why you stepped like if it’s real first time. Tears gonna dry, but your name this time arises throughout the time. I don’t know you, guess you’re just stuck in my dream."
+  ],
+  [
+   "Sinking it straight, floating my eye, I'm stuck in, stuck in ayh ayh.",
+   "Tears gone by but your name still arises, out of the time, i don't know you, still stuck in my dream."
+  ]
+ ],
+ "winter": [
+  [
+   "I can’t see the world you in it",
+   "It’s under film just brought from the sea",
+   "So I started talk acting so folly",
+   "Feels the distance no longer softly just like a moss and me",
+   "The less we just talk about goodbyes"
+  ],
+  [
+   "But summertime is passing and you feel like gone",
+   "something is coming through but I can't see",
+   "I am so bugged down in the mud so please, to going like this winter is come"
+  ]
+ ],
+ "moss": [
+  [
+   "It just seems to be doomed like this, so I guess I blame myself.",
+   "Trace back all the seeds I sowed, clear the earth but no sprouts.",
+   "The way you talk, you breathe can be the itch of my mind.",
+   "But maybe I’m just lost in wanting something I can’t see, was I wrong all along?"
+  ],
+  [
+   "Presence in the room to feign, so I’m gonna cut it for a while.",
+   "I may think too much just because I’m on my own for too long.",
+   "Never thought you would be the one to give me a broken heart.",
+   "Then altered by the empty words, and yet you’re so wrong."
+  ]
+ ],
+ "caterpillar": [
+  [
+   "Take it on skin, wanna see it, it's a wrath",
+   "Pull off extension underneath it",
+   "You’re right"
+  ],
+  [
+   "I to you, to me, some type of way",
+   "Straining, intertwined where it feels dry",
+   "Amid some staring lines, I feel it ‘bout you",
+   "Sense of tide"
+  ],
+  [
+   "Take it on skin, wanna see it, it's a wrath",
+   "pull off extension underneath it",
+   "You’re right"
+  ],
+  [
+   "You to me, caught up in crawling ache",
+   "Being so set on something, so I closed myself off, in the haven made of silk glands",
+   "then nothing lives"
   ]
  ]
 };

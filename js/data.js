@@ -81,6 +81,9 @@ export const LIVE = [
 
 // 尚未發行、只放歌詞的歌
 export const LYRICS_ONLY = [
+  { title: "song of winter's approach", lyrics: 'winter' },
+  { title: 'moss', lyrics: 'moss' },
+  { title: 'caterpillar', lyrics: 'caterpillar' },
   { title: 'Why Always Like You Just Know', lyrics: 'why-always' },
   { title: 'i hear', lyrics: 'i-hear' },
   { title: 'detoss', lyrics: 'detoss' },
@@ -104,20 +107,18 @@ export const LYRICS_CREDIT = 'lyrics written by mato ꩜';
 export const ABOUT = {
   zh: [
     'blu mush 是一個揉合了 Shoegaze、Dream Pop 與 Alternative Rock 元素與特徵的四件式搖滾樂團。',
-    '2024 年誕生於台北，四位同處大三階段的摯友，在密切的日常互動中，總能不斷碰撞出無數的音樂靈感。',
-    '他們深受 Slowdive 與 Fuguko 等樂團影響，卻又保有屬於年輕世代獨特的新鮮感與溫度。',
+    '2024 年誕生於台北，四位同處大三階段的摯友，在密切的日常互動中，總能不斷碰撞出無數的音樂靈感，並保有屬於年輕世代獨特的新鮮感與溫度。',
     '聲響的構築，吉他細緻的殘響與破音建構起巨大而包覆的音牆，不穩定但有機的 Feedback；沉穩的貝斯旋律精準地刻劃歌曲的骨幹；加上極具個人風格的爵士鼓；以及主唱空靈輕柔的細語穿梭其中，blu mush 的音樂總能令人置身於迷茫的霧靄中，卻因為凝視，而透出一絲暖陽。',
   ],
   en: [
     'blu mush is a four-piece rock band that blends elements of Shoegaze, Dream Pop, and Alternative Rock.',
-    'Formed in Taipei in 2024, blu mush grew from the friendship of four kindred souls, whose close daily moments quietly blossomed into music and an endless flow of inspiration.',
+    'Formed in Taipei in 2024, blu mush grew from the friendship of four kindred souls, whose close daily moments quietly blossomed into music and an endless flow of inspiration, carrying the freshness and warmth unique to their generation.',
     'In their sonic landscapes, shimmering guitar reverbs and distortion build a vast, enveloping wall of sound, layered with unstable yet organic feedback. Beneath it, steady basslines carve out the backbone of each song, accompanied by drumming with a distinct personal touch. Floating through it all is the vocalist’s soft, ethereal whisper.',
-    'Deeply influenced by bands like Slowdive and Fuguko, blu mush carries those inspirations forward while retaining the freshness and warmth unique to their generation. blu mush’s music feels like gazing into a drifting haze of mist, where soft rays of sunlight unfold across the layers of sound.',
+    'blu mush’s music feels like gazing into a drifting haze of mist, where soft rays of sunlight unfold across the layers of sound.',
   ],
   ja: [
     'blu mush（ブルマシ）は、Shoegaze、Dream Pop、Alternative Rockの要素を融合させた4ピースロックバンド。',
-    '2024年、台北にて結成された。大学三年生という同じ時期を過ごす4人の親友たちが、日常の密接な交流の中で絶えず音楽的インスピレーションを生み出している。',
-    'SlowdiveやFugukoといったバンドから深い影響を受けながらも、若い世代ならではの新鮮さと温もりを併せ持つ。',
+    '2024年、台北にて結成された。大学三年生という同じ時期を過ごす4人の親友たちが、日常の密接な交流の中で絶えず音楽的インスピレーションを生み出している。その音楽は、若い世代ならではの新鮮さと温もりを併せ持つ。',
     '繊細なリバーブとディストーションをまとったギターが、巨大で包み込むような音の壁を生み出し、不安定でありながら有機的なフィードバックを響かせる。',
     '落ち着いたベースの旋律が楽曲の骨格を刻み、個性的なドラムと、透明感のあるボーカルの柔らかな囁きがその間を漂う。ブルマシの音楽は、聴く者を深い霧の中へと誘う。しかし、その奥を見つめたとき、そこには一筋の暖かな光が差し込んでいる。',
   ],
