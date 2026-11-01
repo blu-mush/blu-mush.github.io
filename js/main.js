@@ -283,10 +283,10 @@ function initChatter() {
     setTimeout(() => n.remove(), writeTime + hold + 1800);
     while (layer.children.length > 4) layer.firstChild.remove();
   }
-  // 自己冒出來：每 4～8 秒一句
+  // 自己冒出來：大約每 10 秒一句（9～11.5 秒之間隨機）
   (function loop() {
     if (!document.hidden) pop();
-    setTimeout(loop, r(4000, 8000));
+    setTimeout(loop, r(9000, 11500));
   })();
   // 點到空白處（不是連結、按鈕）也會寫一句
   addEventListener('click', (e) => {

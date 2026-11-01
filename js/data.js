@@ -160,7 +160,7 @@ export const FOG_WRITING = [
   'cross the still',
   'a silent place',
   'i hear',
-  'wander in the biggest lawn',
+  'Wander in the biggest lawn',
 ];
 
 // ---------- 突然冒出來的話 ----------
@@ -172,28 +172,28 @@ export const CHATTER = [
   'Through the shine, to the night, till this dive…',
   'Those are the movies we left them half way',
   'are we now entering the scene?',
-  "think I will know when the light's out",
+  'think I will know when the light’s out',
   // cross the still
   'In my dream, a silent place.',
   'In my mind, but not my view.',
-  "save those words if they won't be mine",
+  'save those words if they won’t be mine',
   'Not the why and not the who, just the way it flowers.',
   // wanderlust
   'A glitter far from the eastern side',
-  "now you're drifting, no longer awake",
+  'now you’re drifting, no longer awake',
   'where echoes play',
   'Fold turns into folds',
   'lift up my head, the water goes to ears',
   // i hear
   'Picture us in the same old place',
-  "guess you're just stuck in my dream",
+  'guess you’re just stuck in my dream',
   'one thought at a time',
   // why always like you just know
   'it seems so limerent',
   'why always like you just know',
   // song of winter's approach
-  "I can't see the world you in it",
-  "It's under film just brought from the sea",
+  'I can’t see the world you in it',
+  'It’s under film just brought from the sea',
   'just like a moss and me',
   'But summertime is passing',
   // moss
