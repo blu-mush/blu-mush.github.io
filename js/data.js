@@ -139,7 +139,7 @@ export const NEXT_SHOW = null;
 export const PAST_SHOWS = [
   { date: '2026.07.05', title: '肉聲菩薩', venue: 'THE WALL LIVE HOUSE', with: '河豚子、打倒三明治', poster: 'assets/img/shows/2026-07-05-the-wall.jpg' },
   { date: '2026.01.16', title: 'Drawn into Ripples', venue: 'Revolver', with: '畫室 The WLTZ、我夢見長頸鹿對我說', poster: 'assets/img/shows/2026-01-16-drawn-into-ripples.jpg' },
-  { date: '4.21', title: '', venue: 'Revolver', with: 'murmurblurblur、meemeemaomao', poster: 'assets/img/shows/04-21-revolver.jpg' },
+  { date: '2025.04.21', title: '', venue: 'Revolver', with: 'murmurblurblur、meemeemaomao', poster: 'assets/img/shows/2025-04-21-revolver.jpg' },
   { date: '2025.01.16', title: 'Drawn into Ripples', venue: 'Revolver', with: '彼羅蜜、The Whisperer', poster: 'assets/img/shows/2025-01-16-drawn-into-ripples.jpg' },
 ];
 
