@@ -86,7 +86,7 @@ export const LYRICS_ONLY = [
   { title: 'detoss', lyrics: 'detoss' },
 ];
 
-// 頁尾：所有平台
+// 頁尾：聆聽（所有平台）
 export const EVERYWHERE = [
   { label: 'Spotify', url: 'https://open.spotify.com/album/6SXvc4an32nH6Yitlo35Ii' },
   { label: 'Apple Music', url: 'https://music.apple.com/tw/album/light-on-single/6790802054' },
@@ -163,13 +163,32 @@ export const FOG_WRITING = [
 ];
 
 // ---------- 突然冒出來的話 ----------
-// 來源：LINE 群組「blu mush道路平安」常用詞，加上歌詞片段
-// 刻意沒放髒話和彼此的綽號、本名；想加就直接加進陣列
+// 歌詞裡的句子，加上從群組紀錄統計出來的、整團的小事
+// （不放個人資料：本名、綽號、個人的用詞統計都沒有放）
 export const CHATTER = [
-  '超好笑', '笑死', '真假', '我快笑死', '好ㄚ', '好ㄌ', '到ㄌ', '要ㄇ', '真ㄉ',
-  '嗯嗯', '咦', '喔喔', '對啊', '對阿', '好阿', '行', '可', '感覺可以', '問問看',
-  '好耶', '嗚呼', '阿門', '嘻嘻', '呵呵', '度啊', '嗯哼', '不知道誒', '好的',
-  '布嚕粥', '椰絲', '今天練團嗎', '幾點', '團費', '取票', '😭',
-  'When you leave the light on', 'cross the still', 'not the why and not the who',
-  'hay, hay', 'i hear', 'do u ?', 'oh shit.', 'the water goes to ears',
+  // 歌詞
+  'In my dream, a silent place.',
+  'When you leave the light on, I see from a distant star.',
+  'Waiting for the rain to stop',
+  'Those are the movies we left them half way',
+  "think I'll know when the light's out",
+  'A glitter far from the eastern side',
+  "now you're drifting, no longer awake",
+  'where echoes play',
+  'lift up my head, the water goes to ears',
+  'Not the why and not the who, just the way it flowers.',
+  "save those words if they won't be mine",
+  'Picture us in the same old place',
+  "guess you're just stuck in my dream",
+  'it seems so limerent',
+  'Fold turns into folds',
+  // 群組紀錄裡的小事
+  '71,393 則訊息',
+  '813 天裡，有 746 天有人說話',
+  '凌晨 0 點，群組最吵的時候',
+  '星期六最安靜',
+  '2025.03.09　第一首 demo 上架',
+  '混音版本 v4、v5、v6',
+  '2026 年 7 月，一個月 6,621 則訊息',
+  '因為凝視，而透出一絲暖陽',
 ];

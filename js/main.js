@@ -90,10 +90,41 @@ function renderLyricsOnly() {
 }
 
 function renderFooter() {
+  const row = (title, items) => el('div', { class: 'foot-group' },
+    el('h2', {}, title),
+    el('div', { class: 'everywhere' }, items.map((p) => el('a', { href: p.url, ...ext(p.url) }, p.icon ? icon(p.icon) : null, el('span', {}, p.label)))));
   return el('footer', { class: 'footer' },
-    el('div', { class: 'everywhere' }, EVERYWHERE.map((p) => el('a', { href: p.url, ...ext(p.url) }, p.label))),
+    row('listen', EVERYWHERE),
+    row('follow', SOCIALS),
     el('a', { class: 'mail', href: `mailto:${BAND.email}` }, BAND.email),
     el('p', { class: 'copy' }, `© ${new Date().getFullYear()} ${BAND.name}`));
+}
+
+// 左右可以滑的區塊：手機用手指滑，電腦加上左右箭頭（也可以按住拖曳）
+function scroller(strip, label) {
+  const go = (dir) => strip.scrollBy({ left: dir * strip.clientWidth * 0.7, behavior: 'smooth' });
+  const prev = el('button', { type: 'button', class: 'nav prev', 'aria-label': `${label}：上一張` }, '←');
+  const next = el('button', { type: 'button', class: 'nav next', 'aria-label': `${label}：下一張` }, '→');
+  prev.addEventListener('click', () => go(-1));
+  next.addEventListener('click', () => go(1));
+  const update = () => {
+    prev.disabled = strip.scrollLeft < 4;
+    next.disabled = strip.scrollLeft + strip.clientWidth > strip.scrollWidth - 4;
+  };
+  strip.addEventListener('scroll', update, { passive: true });
+  requestAnimationFrame(update);
+  // 滑鼠按住拖曳
+  let down = null;
+  strip.addEventListener('pointerdown', (e) => { if (e.pointerType === 'mouse') down = { x: e.clientX, left: strip.scrollLeft, moved: false }; });
+  addEventListener('pointermove', (e) => {
+    if (!down) return;
+    const dx = e.clientX - down.x;
+    if (Math.abs(dx) > 4) { down.moved = true; strip.classList.add('dragging'); }
+    strip.scrollLeft = down.left - dx;
+  });
+  addEventListener('pointerup', () => { setTimeout(() => strip.classList.remove('dragging'), 0); down = null; });
+  strip.addEventListener('click', (e) => { if (strip.classList.contains('dragging')) e.preventDefault(); }, true);
+  return el('div', { class: 'scroller' }, strip, el('div', { class: 'navs' }, prev, next));
 }
 
 // ---------- 新增區塊 ----------
@@ -139,7 +170,7 @@ function renderShows() {
         el('span', { class: 'date' }, s.date),
         el('span', {}, [s.title, `@ ${s.venue}`].filter(Boolean).join(' ')),
         el('span', { class: 'sub' }, `w/ ${s.with}`)))));
-  return section('shows', 'shows', next, wall);
+  return section('shows', 'shows', next, scroller(wall, '演出海報'));
 }
 
 // 毛片：一條底片，照片平常是糊的，滑到中間或摸到才對焦
@@ -152,7 +183,7 @@ function renderRoll() {
     for (const e of entries) e.target.classList.toggle('focus', e.isIntersecting);
   }, { root: strip, rootMargin: '0px -30% 0px -30%', threshold: 0.5 });
   requestAnimationFrame(() => strip.querySelectorAll('.frame').forEach((f) => io.observe(f)));
-  return section('roll', '毛片', strip);
+  return section('roll', 'film', scroller(strip, '底片'));
 }
 
 function renderAbout() {
@@ -216,7 +247,7 @@ function initChatter() {
       x = side ? vw * (0.04 + Math.random() * 0.3) : vw * (0.62 + Math.random() * 0.3);
       y = vh * (0.12 + Math.random() * 0.72);
     }
-    const n = el('span', { class: 'say' }, text);
+    const n = el('span', { class: /[\u3400-\u9fff]/.test(text) ? 'say zh' : 'say' }, text);
     n.style.left = `${Math.min(Math.max(x, 12), vw - 12)}px`;
     n.style.top = `${y}px`;
     n.style.setProperty('--tilt', `${(Math.random() * 10 - 5).toFixed(1)}deg`);

@@ -514,7 +514,7 @@ a:focus-visible, summary:focus-visible {
 .say {
   position: absolute;
   transform: translate(-10%, -50%) rotate(var(--tilt, 0deg));
-  font-family: 'Reenie Beanie', 'LXGW WenKai TC', var(--sans);
+  font-family: 'Reenie Beanie', var(--sans);
   font-size: var(--size, 24px);
   line-height: 1.1;
   white-space: nowrap;
@@ -530,4 +530,44 @@ a:focus-visible, summary:focus-visible {
   25%  { clip-path: inset(0 -10% 0 -10%); opacity: 1; filter: blur(0); }
   70%  { clip-path: inset(0 -10% 0 -10%); opacity: 1; filter: blur(0); }
   100% { clip-path: inset(0 -10% 0 -10%); opacity: 0; filter: blur(6px); }
+}
+
+/* 冒出來的話：中文用一般內文字體，細一點、淡一點 */
+.say:lang(zh), .say.zh { font-family: var(--sans); font-weight: 400; font-size: calc(var(--size, 24px) * 0.62); letter-spacing: 0.12em; }
+
+/* 頁尾：聆聽、追蹤 */
+.foot-group { margin-bottom: 22px; }
+.foot-group h2 {
+  margin: 0 0 10px;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-shadow: 0 0 8px rgba(238, 243, 239, 0.95);
+}
+.everywhere a { display: inline-flex; align-items: center; gap: 6px; }
+.everywhere svg { width: 14px; height: 14px; fill: var(--ink); }
+
+/* 左右滑動區塊的箭頭：只在有滑鼠的裝置顯示 */
+.scroller { position: relative; }
+.navs { display: none; }
+.roll, .poster-wall { cursor: grab; }
+.dragging { cursor: grabbing; scroll-snap-type: none; }
+.dragging img { pointer-events: none; }
+@media (hover: hover) and (pointer: fine) {
+  .navs { display: flex; justify-content: flex-end; gap: 8px; margin-top: 8px; }
+  .nav {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--edge);
+    background: var(--glass-strong);
+    color: var(--ink);
+    font: inherit;
+    font-size: 16px;
+    cursor: pointer;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+  .nav:hover:not(:disabled) { background: var(--acid); }
+  .nav:disabled { opacity: 0.35; cursor: default; }
 }
