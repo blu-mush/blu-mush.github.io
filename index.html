@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>blu mush</title>
+  <meta name="description" content="blu mush — shoegaze / dream pop from Taipei. 泥好 這裡是布嚕粥。">
+  <meta name="theme-color" content="#2b3530">
+  <meta property="og:title" content="blu mush">
+  <meta property="og:description" content="泥好 這裡是布嚕粥">
+  <meta property="og:image" content="assets/img/bg-landscape.jpg">
+  <link rel="icon" href="assets/img/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&family=Space+Mono:wght@400;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- 底層：清楚的照片 -->
+  <div class="photo" aria-hidden="true"></div>
+  <!-- 上層：霧（js/fog.js 會畫在這裡） -->
+  <canvas id="fog" aria-hidden="true"></canvas>
+  <!-- 凝視時透出的暖光 -->
+  <div id="glow" class="glow" aria-hidden="true"></div>
+  <!-- 顆粒感，來自你們的演出海報 -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <p id="hint" class="hint" aria-hidden="true">擦擦玻璃・或停下來看久一點</p>
+
+  <main id="app"></main>
+
+  <noscript>
+    <main style="padding:24px;position:relative;z-index:3">
+      <p>blu mush — <a href="https://www.instagram.com/blumushh/">Instagram</a> · <a href="https://www.youtube.com/@blumushh">YouTube</a> · <a href="https://streetvoice.com/blumush/">StreetVoice</a> · <a href="mailto:blublumush@gmail.com">blublumush@gmail.com</a></p>
+    </main>
+  </noscript>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
