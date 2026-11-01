@@ -164,32 +164,46 @@ export const FOG_WRITING = [
 ];
 
 // ---------- 突然冒出來的話 ----------
-// 歌詞裡的句子，加上從群組紀錄統計出來的、整團的小事
-// （不放個人資料：本名、綽號、個人的用詞統計都沒有放）
+// 只用歌詞裡的句子
 export const CHATTER = [
-  // 歌詞
-  'In my dream, a silent place.',
+  // light on
   'When you leave the light on, I see from a distant star.',
   'Waiting for the rain to stop',
+  'Through the shine, to the night, till this dive…',
   'Those are the movies we left them half way',
-  "think I'll know when the light's out",
+  'are we now entering the scene?',
+  "think I will know when the light's out",
+  // cross the still
+  'In my dream, a silent place.',
+  'In my mind, but not my view.',
+  "save those words if they won't be mine",
+  'Not the why and not the who, just the way it flowers.',
+  // wanderlust
   'A glitter far from the eastern side',
   "now you're drifting, no longer awake",
   'where echoes play',
+  'Fold turns into folds',
   'lift up my head, the water goes to ears',
-  'Not the why and not the who, just the way it flowers.',
-  "save those words if they won't be mine",
+  // i hear
   'Picture us in the same old place',
   "guess you're just stuck in my dream",
+  'one thought at a time',
+  // why always like you just know
   'it seems so limerent',
-  'Fold turns into folds',
-  // 群組紀錄裡的小事
-  '71,393 則訊息',
-  '813 天裡，有 746 天有人說話',
-  '凌晨 0 點，群組最吵的時候',
-  '星期六最安靜',
-  '2025.03.09　第一首 demo 上架',
-  '混音版本 v4、v5、v6',
-  '2026 年 7 月，一個月 6,621 則訊息',
-  '因為凝視，而透出一絲暖陽',
+  'why always like you just know',
+  // song of winter's approach
+  "I can't see the world you in it",
+  "It's under film just brought from the sea",
+  'just like a moss and me',
+  'But summertime is passing',
+  // moss
+  'Trace back all the seeds I sowed',
+  "clear the earth but no sprouts",
+  'the itch of my mind',
+  // caterpillar
+  'Sense of tide',
+  'in the haven made of silk glands',
+  // detoss
+  'Curiosity, unknown, the fast pace pulls me in',
+  'Guess i felt a lump in my throat',
 ];

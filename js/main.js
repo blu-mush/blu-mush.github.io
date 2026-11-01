@@ -95,8 +95,6 @@ function renderFooter() {
     el('div', { class: 'everywhere' }, items.map((p) => el('a', { href: p.url, ...ext(p.url) }, p.icon ? icon(p.icon) : null, el('span', {}, p.label)))));
   return el('footer', { class: 'footer' },
     row('listen', EVERYWHERE),
-    row('follow', SOCIALS),
-    el('a', { class: 'mail', href: `mailto:${BAND.email}` }, BAND.email),
     el('p', { class: 'copy' }, `© ${new Date().getFullYear()} ${BAND.name}`));
 }
 
