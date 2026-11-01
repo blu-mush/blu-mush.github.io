@@ -570,15 +570,15 @@ a:focus-visible, summary:focus-visible {
   left: calc(8px + var(--p) * (100vw - 64px));
   width: 22px;
   height: auto;
-  transform: rotate(90deg);
+  transform: scaleX(-1) rotate(-90deg);
   transform-origin: center;
   pointer-events: none;
   opacity: 0.85;
   animation: wiggle 1.4s ease-in-out infinite;
 }
 @keyframes wiggle {
-  0%, 100% { transform: rotate(90deg) scaleY(1); }
-  50% { transform: rotate(90deg) scaleY(0.88); }
+  0%, 100% { transform: scaleX(-1) rotate(-90deg) scaleY(1); }
+  50% { transform: scaleX(-1) rotate(-90deg) scaleY(0.88); }
 }
 @media (prefers-reduced-motion: reduce) {
   .caterpillar { animation: none; }
