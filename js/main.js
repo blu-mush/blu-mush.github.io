@@ -288,11 +288,6 @@ function initChatter() {
     if (!document.hidden) pop();
     setTimeout(loop, r(9000, 11500));
   })();
-  // 點到空白處（不是連結、按鈕）也會寫一句
-  addEventListener('click', (e) => {
-    if (e.target.closest('a, button, summary, iframe, input')) return;
-    pop(e.clientX - 20, e.clientY - 20);
-  });
 }
 
 // ---------- 組裝 ----------
