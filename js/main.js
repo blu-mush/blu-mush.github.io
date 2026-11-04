@@ -283,11 +283,13 @@ function initChatter() {
     setTimeout(() => n.remove(), writeTime + hold + 1800);
     while (layer.children.length > 4) layer.firstChild.remove();
   }
-  // 自己冒出來：大約每 10 秒一句（9～11.5 秒之間隨機）
-  (function loop() {
+  // 自己冒出來：大約一分鐘一句（55～65 秒之間隨機）
+  // 第一句在進站幾秒後出現，之後才是每分鐘一句
+  function loop() {
     if (!document.hidden) pop();
-    setTimeout(loop, r(9000, 11500));
-  })();
+    setTimeout(loop, r(55000, 65000));
+  }
+  setTimeout(loop, r(3000, 6000));
 }
 
 // ---------- 組裝 ----------

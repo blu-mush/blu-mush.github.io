@@ -1,6 +1,6 @@
 // 歌詞（written by mato）
 // 來源：
-//   light on、cross the still、i hear、song of winter's approach、moss、caterpillar
+//   light on、cross the still、i hear、song of winter's approach、caterpillar
 //     → Drive「blu mushrics」文件
 //   why always like you just know、wanderlust、detoss
 //     → 原本的歌詞網頁（blu mush demos 2026）
@@ -100,20 +100,6 @@ export const LYRICS = {
    "But summertime is passing and you feel like gone",
    "something is coming through but I can't see",
    "I am so bugged down in the mud so please, to going like this winter is come"
-  ]
- ],
- "moss": [
-  [
-   "It just seems to be doomed like this, so I guess I blame myself.",
-   "Trace back all the seeds I sowed, clear the earth but no sprouts.",
-   "The way you talk, you breathe can be the itch of my mind.",
-   "But maybe I’m just lost in wanting something I can’t see, was I wrong all along?"
-  ],
-  [
-   "Presence in the room to feign, so I’m gonna cut it for a while.",
-   "I may think too much just because I’m on my own for too long.",
-   "Never thought you would be the one to give me a broken heart.",
-   "Then altered by the empty words, and yet you’re so wrong."
   ]
  ],
  "caterpillar": [

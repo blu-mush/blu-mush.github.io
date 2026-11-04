@@ -82,9 +82,8 @@ export const LIVE = [
 // 尚未發行、只放歌詞的歌
 export const LYRICS_ONLY = [
   { title: "song of winter's approach", lyrics: 'winter' },
-  { title: 'moss', lyrics: 'moss' },
   { title: 'caterpillar', lyrics: 'caterpillar' },
-  { title: 'Why Always Like You Just Know', lyrics: 'why-always' },
+  { title: 'why always like... you just know', lyrics: 'why-always' },
   { title: 'i hear', lyrics: 'i-hear' },
   { title: 'detoss', lyrics: 'detoss' },
 ];
@@ -188,18 +187,14 @@ export const CHATTER = [
   'Picture us in the same old place',
   'guess you’re just stuck in my dream',
   'one thought at a time',
-  // why always like you just know
+  // why always like... you just know
   'it seems so limerent',
-  'why always like you just know',
+  'why always like... you just know',
   // song of winter's approach
   'I can’t see the world you in it',
   'It’s under film just brought from the sea',
   'just like a moss and me',
   'But summertime is passing',
-  // moss
-  'Trace back all the seeds I sowed',
-  "clear the earth but no sprouts",
-  'the itch of my mind',
   // caterpillar
   'Sense of tide',
   'in the haven made of silk glands',
